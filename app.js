@@ -3572,69 +3572,92 @@ function renderCalendarTasks() {
    REMINDER / NOTIFICATION SYSTEM
    ========================================================= */
 
-async function requestNotificationPermission() {
+/* =========================================================
+   REMINDERS
+   ========================================================= */
 
-    if (
-        !("Notification" in window)
-    ) {
+const reminderTimers = new Map();
 
-        console.warn(
-            "Browser notifications are not supported."
-        );
+function showReminderCard(task) {
+    // Remove an existing reminder card if one is already visible
+    document.querySelector(".aqelio-reminder-card")?.remove();
 
-        return false;
+    const card = document.createElement("div");
+    card.className = "aqelio-reminder-card";
 
-    }
+    card.innerHTML = `
+        <div class="aqelio-reminder-icon">🔔</div>
 
+        <div class="aqelio-reminder-content">
+            <div class="aqelio-reminder-title">Aqelio Reminder</div>
+            <div class="aqelio-reminder-task">${escapeHTML(task.title)}</div>
+            <div class="aqelio-reminder-subtitle">It's time for this task.</div>
+        </div>
 
-    if (
-        Notification.permission ===
-        "granted"
-    ) {
+        <button
+            type="button"
+            class="aqelio-reminder-close"
+            aria-label="Dismiss reminder"
+        >
+            ×
+        </button>
+    `;
 
-        return true;
+    document.body.appendChild(card);
 
-    }
+    // Close button
+    card.querySelector(".aqelio-reminder-close")?.addEventListener("click", () => {
+        card.classList.remove("show");
 
+        setTimeout(() => {
+            card.remove();
+        }, 250);
+    });
 
-    if (
-        Notification.permission ===
-        "denied"
-    ) {
+    // Animate in
+    requestAnimationFrame(() => {
+        card.classList.add("show");
+    });
 
-        console.warn(
-            "Notification permission was denied."
-        );
+    // Automatically disappear after 8 seconds
+    setTimeout(() => {
+        if (!card.isConnected) return;
 
-        return false;
+        card.classList.remove("show");
 
-    }
-
-
-    try {
-
-        const permission =
-            await Notification.requestPermission();
-
-
-        return (
-            permission ===
-            "granted"
-        );
-
-    } catch (error) {
-
-        console.error(
-            "Notification permission error:",
-            error
-        );
-
-        return false;
-
-    }
+        setTimeout(() => {
+            card.remove();
+        }, 250);
+    }, 8000);
 }
 
+function scheduleReminder(task) {
+    if (!task.reminder || task.completed) return;
 
+    const when = new Date(task.reminder).getTime();
+    const delay = when - Date.now();
+
+    if (delay <= 0 || delay > 2147483647) return;
+
+    if (reminderTimers.has(task.id)) {
+        clearTimeout(reminderTimers.get(task.id));
+    }
+
+    const timer = setTimeout(() => {
+
+        // Show Aqelio's own in-app reminder card
+        showReminderCard(task);
+
+        reminderTimers.delete(task.id);
+
+    }, delay);
+
+    reminderTimers.set(task.id, timer);
+}
+
+function scheduleAllReminders() {
+    tasks.forEach(scheduleReminder);
+}
 /* =========================================================
    REMINDER SOUND
    ========================================================= */
