@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqelio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Aqelio.jpg">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <main class="app">
+
+        <!-- ================= HOME ================= -->
+
+        <section id="home-screen" class="screen active">
+
+            <header class="home-header">
+
+                <div>
+                    <div class="brand">Aqelio</div>
+
+                    <h1>Good morning</h1>
+
+                    <p id="current-date"></p>
+                </div>
+
+                <div class="avatar">E</div>
+
+            </header>
+
+
+            <section class="progress-card">
+
+                <div class="progress-copy">
+
+                    <span class="eyebrow">TODAY</span>
+
+                    <h2 id="progress-text">
+                        0 of 0 tasks completed
+                    </h2>
+
+                </div>
+
+                <div class="progress-right">
+
+                    <strong id="progress-percent">
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="progress-track">
+
+                    <div id="progress-fill"></div>
+
+                </div>
+
+            </section>
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        YOUR DAY
+                    </span>
+
+                    <h2>Today</h2>
+
+                </div>
+
+                <button
+                    id="add-task-top"
+                    class="link-button"
+                    type="button"
+                >
+                    + Add task
+                </button>
+
+            </div>
+
+
+            <div id="task-list" class="task-list"></div>
+
+
+            <section class="home-focus-card">
+
+                <div>
+
+                    <span class="eyebrow">
+                        FOCUS
+                    </span>
+
+                    <h2>
+                        Ready to get in the flow?
+                    </h2>
+
+                    <p>
+                        Start a 25-minute session and give one task your full attention.
+                    </p>
+
+                </div>
+
+                <button
+                    id="home-focus-button"
+                    class="primary-button"
+                    type="button"
+                >
+                    Start Focus
+                </button>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================= CALENDAR ================= -->
+
+        <section id="calendar-screen" class="screen">
+
+            <header class="page-header">
+
+                <div>
+
+                    <div class="brand small">
+                        Aqelio
+                    </div>
+
+                    <h1 id="calendar-month"></h1>
+
+                </div>
+
+                <div class="month-controls">
+
+                    <button
+                        id="previous-month"
+                        class="square-button"
+                        type="button"
+                    >
+                        ‹
+                    </button>
+
+                    <button
+                        id="next-month"
+                        class="square-button"
+                        type="button"
+                    >
+                        ›
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <section class="calendar-card">
+
+                <div class="weekdays">
+
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+
+                </div>
+
+                <div
+                    id="calendar-grid"
+                    class="calendar-grid"
+                ></div>
+
+            </section>
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="eyebrow">
+                        SELECTED DAY
+                    </span>
+
+                    <h2 id="selected-date-title"></h2>
+
+                </div>
+
+                <button
+                    id="add-task-calendar"
+                    class="link-button"
+                    type="button"
+                >
+                    + Add task
+                </button>
+
+            </div>
+
+
+            <div
+                id="calendar-task-list"
+                class="task-list"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= FOCUS ================= -->
+
+        <section id="focus-screen" class="screen">
+
+            <header class="page-header">
+
+                <div>
+
+                    <div class="brand small">
+                        Aqelio
+                    </div>
+
+                    <h1>Focus</h1>
+
+                </div>
+
+            </header>
+
+
+            <section class="focus-screen-card">
+
+                <div class="timer-ring">
+
+                    <span id="focus-time">
+                        25:00
+                    </span>
+
+                </div>
+
+                <span class="eyebrow">
+                    POMODORO
+                </span>
+
+                <h2>
+                    Focus on what matters
+                </h2>
+
+                <p>
+                    Work distraction-free for 25 minutes.
+                </p>
+
+
+                <div class="focus-buttons">
+
+                    <button
+                        id="start-focus-button"
+                        class="primary-button"
+                        type="button"
+                    >
+                        Start Focus
+                    </button>
+
+                    <button
+                        id="reset-focus-button"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================= STATS ================= -->
+
+        <section id="stats-screen" class="screen">
+
+            <header class="page-header">
+
+                <div>
+
+                    <div class="brand small">
+                        Aqelio
+                    </div>
+
+                    <h1>Stats</h1>
+
+                </div>
+
+            </header>
+
+
+            <div class="stats-grid">
+
+                <article class="stat-card">
+
+                    <span class="eyebrow">
+                        COMPLETED
+                    </span>
+
+                    <strong id="total-completed">
+                        0
+                    </strong>
+
+                    <p>
+                        Tasks
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="eyebrow">
+                        FOCUS
+                    </span>
+
+                    <strong id="total-focus">
+                        0
+                    </strong>
+
+                    <p>
+                        Sessions
+                    </p>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <span class="eyebrow">
+                        MINUTES
+                    </span>
+
+                    <strong id="total-minutes">
+                        0
+                    </strong>
+
+                    <p>
+                        Completed
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav class="bottom-nav">
+
+        <button
+            id="nav-home"
+            class="nav-item active"
+            type="button"
+        >
+
+            <span class="nav-symbol">
+                ⌂
+            </span>
+
+            <span>
+                Today
+            </span>
+
+        </button>
+
+
+        <button
+            id="nav-calendar"
+            class="nav-item"
+            type="button"
+        >
+
+            <span class="nav-symbol">
+                ▦
+            </span>
+
+            <span>
+                Calendar
+            </span>
+
+        </button>
+
+
+        <button
+            id="add-task-main"
+            class="main-add-button"
+            type="button"
+            aria-label="Add task"
+        >
+            +
+        </button>
+
+
+        <button
+            id="nav-focus"
+            class="nav-item"
+            type="button"
+        >
+
+            <span class="nav-symbol">
+                ◷
+            </span>
+
+            <span>
+                Focus
+            </span>
+
+        </button>
+
+
+        <button
+            id="nav-stats"
+            class="nav-item"
+            type="button"
+        >
+
+            <span class="nav-symbol">
+                ▥
+            </span>
+
+            <span>
+                Stats
+            </span>
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- ================= TASK MODAL ================= -->
+
+<div
+    id="task-modal"
+    class="modal"
+>
+
+    <div
+        id="modal-overlay"
+        class="modal-overlay"
+    ></div>
+
+
+    <div class="modal-panel">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="eyebrow">
+                    <span id="modal-eyebrow">
+                        NEW TASK
+                    </span>
+                </span>
+
+                <h2 id="modal-title">
+                    Add a task
+                </h2>
+
+            </div>
+
+
+            <button
+                id="close-modal"
+                class="modal-close"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- TASK -->
+
+        <label for="task-title">
+            Task
+        </label>
+
+        <input
+            id="task-title"
+            type="text"
+            placeholder="What do you need to do?"
+        >
+
+
+        <!-- DATE -->
+
+        <label for="task-date">
+            Date
+        </label>
+
+        <input
+            id="task-date"
+            type="date"
+        >
+
+
+        <!-- TIME -->
+
+        <div class="form-section">
+
+            <label for="task-time">
+                Time
+            </label>
+
+            <input
+                id="task-time"
+                type="time"
+            >
+
+        </div>
+
+
+        <!-- REMINDER -->
+
+        <div class="form-section">
+
+            <label for="task-reminder">
+                Reminder
+            </label>
+
+            <select id="task-reminder">
+
+                <option value="none">
+                    No reminder
+                </option>
+
+                <option value="at-time">
+                    At task time
+                </option>
+
+                <option value="10">
+                    10 minutes before
+                </option>
+
+                <option value="30">
+                    30 minutes before
+                </option>
+
+                <option value="60">
+                    1 hour before
+                </option>
+
+            </select>
+
+            <p class="form-help">
+                Reminders need a task time to work.
+            </p>
+
+        </div>
+
+
+        <!-- REPEAT -->
+
+        <div class="form-section">
+
+            <label for="task-repeat">
+                Repeat
+            </label>
+
+            <select id="task-repeat">
+
+                <option value="none">
+                    Does not repeat
+                </option>
+
+                <option value="daily">
+                    Daily
+                </option>
+
+                <option value="weekdays">
+                    Weekdays
+                </option>
+
+                <option value="weekly">
+                    Weekly
+                </option>
+
+                <option value="monthly">
+                    Monthly
+                </option>
+
+            </select>
+
+            <p class="form-help">
+                Repeating tasks automatically appear on future dates.
+            </p>
+
+        </div>
+
+
+        <!-- CATEGORY -->
+
+        <div class="form-section">
+
+            <div class="form-section-header">
+
+                <label>
+                    Category
+                </label>
+
+                <button
+                    id="show-category-form"
+                    class="link-button"
+                    type="button"
+                >
+                    + New
+                </button>
+
+            </div>
+
+
+            <div
+                id="category-list"
+                class="category-list"
+            ></div>
+
+
+            <div
+                id="category-form"
+                class="category-form hidden"
+            >
+
+                <input
+                    id="category-name"
+                    type="text"
+                    placeholder="Category name"
+                >
+
+
+                <div class="category-form-actions">
+
+                    <button
+                        id="cancel-category"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        id="save-category"
+                        class="primary-button"
+                        type="button"
+                    >
+                        Save
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DURATION -->
+
+        <div class="form-section">
+
+            <label>
+                Estimated time
+            </label>
+
+
+            <div class="duration-grid">
+
+                <button
+                    class="duration-button"
+                    data-duration="15"
+                    type="button"
+                >
+                    15 min
+                </button>
+
+
+                <button
+                    class="duration-button selected"
+                    data-duration="25"
+                    type="button"
+                >
+                    25 min
+                </button>
+
+
+                <button
+                    class="duration-button"
+                    data-duration="45"
+                    type="button"
+                >
+                    45 min
+                </button>
+
+
+                <button
+                    class="duration-button"
+                    data-duration="60"
+                    type="button"
+                >
+                    60 min
+                </button>
+
+            </div>
+
+
+            <input
+                id="custom-duration"
+                type="number"
+                min="1"
+                placeholder="Custom minutes"
+            >
+
+        </div>
+
+
+        <button
+            id="save-task"
+            class="primary-button save-task-button"
+            type="button"
+        >
+            Add Task
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
