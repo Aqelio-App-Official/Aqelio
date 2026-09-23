@@ -2807,3 +2807,138 @@ input[type="text"] {
     background:
         transparent;
 }
+
+/* =========================================================
+   AQELIO REMINDER CARD
+   ========================================================= */
+
+.aqelio-reminder-card {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+
+    width: min(380px, calc(100vw - 40px));
+
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+
+    padding: 18px 18px 18px 18px;
+
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid #d7e5e8;
+    border-left: 5px solid #0d929d;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 14px 40px rgba(25, 55, 65, 0.18),
+        0 4px 12px rgba(25, 55, 65, 0.08);
+
+    z-index: 99999;
+
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.aqelio-reminder-card.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+
+    pointer-events: auto;
+}
+
+.aqelio-reminder-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e5f5f6;
+
+    font-size: 20px;
+}
+
+.aqelio-reminder-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.aqelio-reminder-title {
+    margin-bottom: 3px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #0d929d;
+}
+
+.aqelio-reminder-task {
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #202d32;
+
+    overflow-wrap: anywhere;
+}
+
+.aqelio-reminder-subtitle {
+    margin-top: 3px;
+
+    font-size: 13px;
+
+    color: #718388;
+}
+
+.aqelio-reminder-close {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #829398;
+
+    font-size: 23px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+.aqelio-reminder-close:hover {
+    background: #eef4f5;
+    color: #27363b;
+}
+
+@media (max-width: 600px) {
+    .aqelio-reminder-card {
+        right: 14px;
+        bottom: 14px;
+
+        width: calc(100vw - 28px);
+    }
+}
