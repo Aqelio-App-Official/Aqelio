@@ -2,25 +2,22 @@
   "name": "Aqelio",
   "short_name": "Aqelio",
   "description": "A minimal productivity and task management app.",
-  "id": "/Aqelio/",
   "start_url": "/Aqelio/",
   "scope": "/Aqelio/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0f929d",
+  "theme_color": "#43aeb5",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "Aqelio.jpg",
+      "src": "/Aqelio/icon-192.png",
       "sizes": "192x192",
-      "type": "image/jpeg",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "Aqelio.jpg",
+      "src": "/Aqelio/icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any"
+      "type": "image/png"
     }
   ]
 }
